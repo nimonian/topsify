@@ -1,7 +1,5 @@
 # Topsify
 
-This is my Topsify app!
-
 ## Notes
 
 ### Creating your local repo
