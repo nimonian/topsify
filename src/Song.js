@@ -1,29 +1,25 @@
-class Song {
-  static catalogue = []
+const File = require('./File')
 
-  static addSong(title) {
-    Song.catalogue.push(title)
-  }
-
-  constructor(title, duration) {
-    this.title = title
+class Song extends File {
+  constructor(name, extension, size, duration) {
+    super(name, extension, size)
     this.duration = duration
-    Song.addSong(title)
   }
 
-  logDetails() {
-    console.log(`The song ${this.title} is ${this.duration} seconds long.`)
+  displayDuration() {
+    let seconds = this.duration
+    let minutes = 0
+
+    while (seconds >= 60) {
+      seconds -= 60
+      minutes++
+    }
+
+    seconds = (seconds < 10 ? '0' : '') + seconds
+    minutes = (minutes < 10 ? '0' : '') + minutes
+
+    return minutes + ':' + seconds
   }
 }
 
-class Anthem extends Song {
-  constructor(title, duration, affiliation) {
-    // calls constructor of Song
-    super(title, duration)
-
-    // custom logic for Anthem
-    this.affiliation = affiliation
-  }
-}
-
-module.exports = { Song, Anthem }
+module.exports = Song
